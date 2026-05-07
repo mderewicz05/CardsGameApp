@@ -1,0 +1,46 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:CardGamesApp.ViewModels"
+             x:Class="CardGamesApp.Views.PlaceholderView"
+             x:DataType="vm:PlaceholderViewModel">
+
+    <UserControl.Styles>
+        <Style Selector="Button">
+            <Setter Property="Background" Value="#F9E2AF"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+    </UserControl.Styles>
+
+    <Grid RowDefinitions="*,Auto,*">
+        <Border Grid.Row="1"
+                Background="#313244"
+                CornerRadius="16"
+                Padding="32"
+                Width="650"
+                HorizontalAlignment="Center">
+            <StackPanel Spacing="18">
+                <TextBlock Text="{Binding Title}"
+                           FontSize="30"
+                           FontWeight="Bold"
+                           Foreground="White"
+                           HorizontalAlignment="Center" />
+
+                <TextBlock Text="{Binding Description}"
+                           TextWrapping="Wrap"
+                           FontSize="16"
+                           Foreground="#CDD6F4"
+                           HorizontalAlignment="Center"
+                           TextAlignment="Center" />
+
+                <Button Content="Powrót do menu"
+                        Command="{Binding BackToMenuCommand}"
+                        Width="180"
+                        Height="45"
+                        HorizontalAlignment="Center" />
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

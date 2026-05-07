@@ -9,16 +9,19 @@
         Height="600"
         MinWidth="700"
         MinHeight="500">
+<Window.DataTemplates>
+    <DataTemplate DataType="{x:Type vm:MainMenuViewModel}">
+        <views:MainMenuView />
+    </DataTemplate>
 
-    <Window.DataTemplates>
-        <DataTemplate DataType="{x:Type vm:MainMenuViewModel}">
-            <views:MainMenuView />
-        </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:PlayerViewModel}">
+        <views:PlayerView />
+    </DataTemplate>
 
-        <DataTemplate DataType="{x:Type vm:PlayerViewModel}">
-            <views:PlayerView />
-        </DataTemplate>
-    </Window.DataTemplates>
+    <DataTemplate DataType="{x:Type vm:PlaceholderViewModel}">
+        <views:PlaceholderView />
+    </DataTemplate>
+</Window.DataTemplates>
 
     <Border Padding="24" Background="#1E1E2E">
         <ContentControl Content="{Binding CurrentViewModel}" />
