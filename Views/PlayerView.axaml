@@ -1,0 +1,88 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:CardGamesApp.ViewModels"
+             x:Class="CardGamesApp.Views.PlayerView"
+             x:DataType="vm:PlayerViewModel">
+
+    <UserControl.Styles>
+        <Style Selector="Button">
+            <Setter Property="Background" Value="#A6E3A1"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+    </UserControl.Styles>
+
+    <Grid RowDefinitions="Auto,Auto,*,Auto" RowSpacing="18">
+        <StackPanel Grid.Row="0" Spacing="6">
+            <TextBlock Text="Dodawanie graczy"
+                       FontSize="32"
+                       FontWeight="Bold"
+                       Foreground="White" />
+
+            <TextBlock Text="Dodaj graczy po loginie albo ID. Te dane będą potem używane w grach."
+                       FontSize="15"
+                       Foreground="#CDD6F4" />
+        </StackPanel>
+
+        <Border Grid.Row="1"
+                Background="#313244"
+                CornerRadius="12"
+                Padding="16">
+            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+                <TextBox Grid.Column="0"
+                         Watermark="Wpisz login gracza..."
+                         Text="{Binding NewPlayerLogin}"
+                         FontSize="16"
+                         Height="45" />
+
+                <Button Grid.Column="1"
+                        Content="Dodaj"
+                        Command="{Binding AddPlayerCommand}"
+                        Width="120"
+                        Height="45"
+                        FontSize="16" />
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="2"
+                Background="#313244"
+                CornerRadius="12"
+                Padding="16">
+            <Grid RowDefinitions="Auto,*">
+                <TextBlock Grid.Row="0"
+                           Text="Lista graczy"
+                           FontSize="20"
+                           FontWeight="Bold"
+                           Foreground="White"
+                           Margin="0,0,0,12" />
+
+                <ListBox Grid.Row="1"
+                         ItemsSource="{Binding Players}"
+                         SelectedItem="{Binding SelectedPlayer}"
+                         FontSize="16" />
+            </Grid>
+        </Border>
+
+        <Grid Grid.Row="3" ColumnDefinitions="*,Auto,Auto" ColumnSpacing="12">
+            <TextBlock Grid.Column="0"
+                       Text="{Binding Message}"
+                       Foreground="#F9E2AF"
+                       VerticalAlignment="Center"
+                       FontSize="14" />
+
+            <Button Grid.Column="1"
+                    Content="Usuń wybranego"
+                    Command="{Binding RemoveSelectedPlayerCommand}"
+                    Width="150"
+                    Height="40" />
+
+            <Button Grid.Column="2"
+                    Content="Powrót"
+                    Command="{Binding BackToMenuCommand}"
+                    Width="120"
+                    Height="40" />
+        </Grid>
+    </Grid>
+</UserControl>

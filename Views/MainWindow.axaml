@@ -1,20 +1,26 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="using:CardGamesApp.ViewModels"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        xmlns:views="using:CardGamesApp.Views"
         x:Class="CardGamesApp.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
-        Icon="/Assets/avalonia-logo.ico"
-        Title="CardGamesApp">
+        Title="Card Games App"
+        Width="900"
+        Height="600"
+        MinWidth="700"
+        MinHeight="500">
 
-    <Design.DataContext>
-        <!-- This only sets the DataContext for the previewer in an IDE,
-             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-        <vm:MainWindowViewModel/>
-    </Design.DataContext>
+    <Window.DataTemplates>
+        <DataTemplate DataType="{x:Type vm:MainMenuViewModel}">
+            <views:MainMenuView />
+        </DataTemplate>
 
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <DataTemplate DataType="{x:Type vm:PlayerViewModel}">
+            <views:PlayerView />
+        </DataTemplate>
+    </Window.DataTemplates>
 
+    <Border Padding="24" Background="#1E1E2E">
+        <ContentControl Content="{Binding CurrentViewModel}" />
+    </Border>
 </Window>
