@@ -1,0 +1,80 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:CardGamesApp.ViewModels"
+             xmlns:models="using:CardGamesApp.Models"
+             x:Class="CardGamesApp.Views.MemoryGameView"
+             x:DataType="vm:MemoryGameViewModel">
+
+    <UserControl.Styles>
+        <Style Selector="Button">
+            <Setter Property="Background" Value="#89B4FA"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+    </UserControl.Styles>
+
+    <Grid RowDefinitions="Auto,*,Auto" RowSpacing="18">
+        <StackPanel Grid.Row="0" Spacing="6">
+            <TextBlock Text="Gra 1: Memory karciane"
+                       FontSize="32"
+                       FontWeight="Bold"
+                       Foreground="White"
+                       HorizontalAlignment="Center" />
+
+            <TextBlock Text="{Binding Komunikat}"
+                       FontSize="16"
+                       Foreground="#F9E2AF"
+                       HorizontalAlignment="Center" />
+
+            <TextBlock Text="{Binding LiczbaRuchow, StringFormat='Liczba ruchów: {0}'}"
+                       FontSize="15"
+                       Foreground="#CDD6F4"
+                       HorizontalAlignment="Center" />
+
+            <TextBlock Text="{Binding ZnalezionePary, StringFormat='Znalezione pary: {0}/6'}"
+                       FontSize="15"
+                       Foreground="#CDD6F4"
+                       HorizontalAlignment="Center" />
+        </StackPanel>
+
+        <ItemsControl Grid.Row="1"
+                      ItemsSource="{Binding Karty}"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Center">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Width="520"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+
+            <ItemsControl.ItemTemplate>
+                <DataTemplate DataType="{x:Type models:MemoryCard}">
+                    <Button Content="{Binding WyswietlanyTekst}"
+                            Command="{Binding $parent[ItemsControl].DataContext.WybierzKarteCommand}"
+                            CommandParameter="{Binding}"
+                            Width="110"
+                            Height="90"
+                            Margin="8"
+                            FontSize="26"/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+        <StackPanel Grid.Row="2"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    Spacing="12">
+            <Button Content="Nowa gra"
+                    Command="{Binding NowaGraCommand}"
+                    Width="140"
+                    Height="45" />
+
+            <Button Content="Powrót do menu"
+                    Command="{Binding PowrotDoMenuCommand}"
+                    Width="180"
+                    Height="45" />
+        </StackPanel>
+    </Grid>
+</UserControl>

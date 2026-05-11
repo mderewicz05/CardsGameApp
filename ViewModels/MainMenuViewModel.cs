@@ -23,15 +23,15 @@ public partial class MainMenuViewModel : ViewModelBase
 	}
 
 	[RelayCommand]
-	private void GoToWarGame()
+	private void GoToMemoryGame()
 	{
-		_mainWindowViewModel.ShowWarGame();
+		_mainWindowViewModel.ShowMemoryGame();
 	}
 
 	[RelayCommand]
-	private void GoToTwentyOneGame()
+	private void GoToOczkoGame()
 	{
-		_mainWindowViewModel.ShowTwentyOneGame();
+		_mainWindowViewModel.ShowOczkoGame();
 	}
 
 	[RelayCommand]

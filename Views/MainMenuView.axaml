@@ -58,15 +58,15 @@
 
             <Button Grid.Row="1"
                     Grid.Column="0"
-                    Content="Gra 1: Wojna"
-                    Command="{Binding GoToWarGameCommand}"
+                    Content="Gra 1: Memory"
+                    Command="{Binding GoToMemoryGameCommand}"
                     Height="70"
                     FontSize="18" />
 
             <Button Grid.Row="1"
                     Grid.Column="1"
-                    Content="Gra 2: Oczko / 21"
-                    Command="{Binding GoToTwentyOneGameCommand}"
+                    Content="Gra 2: Oczko"
+                    Command="{Binding GoToOczkoGameCommand}"
                     Height="70"
                     FontSize="18" />
 

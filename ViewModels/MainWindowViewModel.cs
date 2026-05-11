@@ -26,22 +26,14 @@ public partial class MainWindowViewModel : ViewModelBase
 		CurrentViewModel = new PlayerViewModel(this, _playerService);
 	}
 
-	public void ShowWarGame()
+	public void ShowMemoryGame()
 	{
-		CurrentViewModel = new PlaceholderViewModel(
-			this,
-			"Gra 1: Wojna",
-			"Tutaj osoba 2 podłączy właściwą logikę i ekran gry Wojna."
-		);
+		CurrentViewModel = new MemoryGameViewModel(this, _playerService);
 	}
 
-	public void ShowTwentyOneGame()
+	public void ShowOczkoGame()
 	{
-		CurrentViewModel = new PlaceholderViewModel(
-			this,
-			"Gra 2: Oczko / 21",
-			"Tutaj osoba 2 podłączy właściwą logikę i ekran gry Oczko / 21."
-		);
+		CurrentViewModel = new OczkoViewModel(this, _playerService);
 	}
 
 	public void ShowHigherLowerGame()
