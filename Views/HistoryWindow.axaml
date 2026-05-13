@@ -1,0 +1,10 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="CardGamesApp.Views.HistoryWindow"
+        Title="Historia Rozgrywek" Width="600" Height="400">
+    <StackPanel Margin="20">
+        <TextBlock Text="Historia Gier" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
+        <DataGrid ItemsSource="{Binding History}" AutoGenerateColumns="True" IsReadOnly="True">
+            </DataGrid>
+    </StackPanel>
+</Window>

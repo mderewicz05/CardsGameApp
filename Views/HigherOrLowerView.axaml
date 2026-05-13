@@ -1,0 +1,36 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:CardGamesApp.ViewModels"
+             x:Class="CardGamesApp.Views.HigherOrLowerView"
+             x:DataType="vm:HigherOrLowerViewModel">
+
+    <Design.DataContext>
+        <vm:HigherOrLowerViewModel/>
+    </Design.DataContext>
+
+    <StackPanel Margin="20" Spacing="20" HorizontalAlignment="Center" VerticalAlignment="Center">
+        
+        <TextBlock Text="Higher or Lower" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center"/>
+
+        <Border BorderBrush="Black" BorderThickness="2" CornerRadius="10" Padding="20" Background="White">
+            <StackPanel HorizontalAlignment="Center">
+                <TextBlock Text="{Binding CurrentCard.Figura}" FontSize="40" HorizontalAlignment="Center" Foreground="Black"/>
+                <TextBlock Text="{Binding CurrentCard.Kolor}" FontSize="60" HorizontalAlignment="Center" Foreground="Black"/>
+            </StackPanel>
+        </Border>
+
+        <TextBlock Text="{Binding Message}" TextWrapping="Wrap" TextAlignment="Center" FontSize="16"/>
+        <TextBlock Text="{Binding Score, StringFormat='Twój wynik: {0}'}" FontSize="20" FontWeight="SemiBold" HorizontalAlignment="Center"/>
+
+        <StackPanel Orientation="Horizontal" Spacing="20" HorizontalAlignment="Center">
+            <Button Content="NI¯SZA" Command="{Binding GuessLower}" 
+                    Width="120" Height="50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                    Background="Firebrick" Foreground="White"/>
+            
+            <Button Content="WY¯SZA" Command="{Binding GuessHigher}" 
+                    Width="120" Height="50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                    Background="ForestGreen" Foreground="White"/>
+        </StackPanel>
+
+    </StackPanel>
+</UserControl>
