@@ -9,6 +9,8 @@ namespace CardGamesApp.Views
         public HistoryWindow()
         {
             InitializeComponent();
+            DataContext = new { History = GameHistoryService.GetHistory() };
+        
         }
 
         private void InitializeComponent()

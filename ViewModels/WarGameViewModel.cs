@@ -61,6 +61,13 @@ public partial class WarGameViewModel : ViewModelBase
         }
 
         Komunikat = "Runda zakończona.";
+        GameHistoryService.AddEntry(new GameHistoryEntry
+        {
+            GameName = "Wojna",
+            Players = $"{Players[0].Login} vs {Players[1].Login}",
+            Winner = Zwyciezca.Replace("Wygrywa: ", ""),
+            Date = DateTime.Now
+        });
     }
 
     [RelayCommand]

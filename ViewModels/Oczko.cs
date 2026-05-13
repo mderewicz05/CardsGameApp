@@ -163,6 +163,13 @@ public partial class OczkoViewModel : ViewModelBase
         {
             Komunikat = "Remis.";
         }
+        GameHistoryService.AddEntry(new GameHistoryEntry
+        {
+            GameName = "Oczko",
+            Players = Players.Count > 0 ? Players[0].Login : "Gracz",
+            Winner = Komunikat,
+            Date = DateTime.Now
+        });
     }
 
     private void AktualizujTeksty()

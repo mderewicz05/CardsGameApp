@@ -58,9 +58,14 @@ namespace CardGamesApp.ViewModels
             }
             else
             {
-                Message = $"Pudlo! To by³a {nextCard}. Zaczynamy od nowa.";
-                // Tutaj mo¿esz wywo³aæ zapis do historii (Twój Etap 3)
-                // SaveToHistory("Higher or Lower", Score);
+                Message = $"Pudlo! To by³a {nextCard}. Twój wynik to {Score}.";
+                GameHistoryService.AddEntry(new GameHistoryEntry
+                {
+                    GameName = "Higher or Lower",
+                    Players = "Gracz 1", 
+                    Winner = $"Wynik: {Score}",
+                    Date = DateTime.Now
+                });
                 Score = 0;
             }
 

@@ -106,6 +106,13 @@ public partial class MemoryGameViewModel : ViewModelBase
             if (ZnalezionePary == 6)
             {
                 Komunikat = $"Koniec gry! Liczba ruchów: {LiczbaRuchow}.";
+                GameHistoryService.AddEntry(new GameHistoryEntry
+                {
+                    GameName = "Memory Game",
+                    Players = _playerService.Players.FirstOrDefault()?.Login ?? "Gość",
+                    Winner = $"Ukończono w {LiczbaRuchow} ruchach",
+                    Date = DateTime.Now
+                });
             }
         }
         else
