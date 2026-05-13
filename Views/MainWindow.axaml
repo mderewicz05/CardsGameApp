@@ -19,10 +19,6 @@
             <views:PlayerView />
         </DataTemplate>
 
-        <DataTemplate DataType="{x:Type vm:PlaceholderViewModel}">
-            <views:PlaceholderView />
-        </DataTemplate>
-
         <DataTemplate DataType="{x:Type vm:MemoryGameViewModel}">
             <views:MemoryGameView />
         </DataTemplate>
@@ -30,6 +26,10 @@
         <DataTemplate DataType="{x:Type vm:OczkoViewModel}">
             <views:OczkoView />
         </DataTemplate>
+
+		<DataTemplate DataType="{x:Type vm:HigherOrLowerViewModel}">
+			<views:HigherOrLowerView/>
+		</DataTemplate>
         
         
         

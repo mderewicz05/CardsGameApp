@@ -37,12 +37,12 @@ public partial class MainMenuViewModel : ViewModelBase
 	[RelayCommand]
 	private void GoToHigherLowerGame()
 	{
-		_mainWindowViewModel.ShowHigherLowerGame();
-	}
+        _mainWindowViewModel.ShowHigherOrLower();
+    }
 
-	[RelayCommand]
+    [RelayCommand]
 	private void GoToHistory()
 	{
-		_mainWindowViewModel.ShowHistory();
-	}
+        _mainWindowViewModel.ShowHistory();
+    }
 }

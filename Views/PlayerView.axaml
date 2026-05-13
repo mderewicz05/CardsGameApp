@@ -32,7 +32,7 @@
                 Padding="16">
             <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
                 <TextBox Grid.Column="0"
-                         Watermark="Wpisz login gracza..."
+                         PlaceholderText="Wpisz login gracza..."
                          Text="{Binding NewPlayerLogin}"
                          FontSize="16"
                          Height="45" />

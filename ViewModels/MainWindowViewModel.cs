@@ -13,7 +13,7 @@ public partial class MainWindowViewModel : ViewModelBase
 	public MainWindowViewModel()
 	{
 		_playerService = new PlayerService();
-		currentViewModel = new MainMenuViewModel(this, _playerService);
+		CurrentViewModel = new MainMenuViewModel(this, _playerService);
 	}
 
 	public void ShowMainMenu()
@@ -36,21 +36,14 @@ public partial class MainWindowViewModel : ViewModelBase
 		CurrentViewModel = new OczkoViewModel(this, _playerService);
 	}
 
-	public void ShowHigherLowerGame()
+	public void ShowHigherOrLower()
 	{
-		CurrentViewModel = new PlaceholderViewModel(
-			this,
-			"Gra 3: Higher or Lower",
-			"Tutaj osoba 3 podłączy właściwą logikę i ekran gry Higher or Lower."
-		);
-	}
+        CurrentViewModel = new HigherOrLowerViewModel(this, _playerService);
+    }
 
 	public void ShowHistory()
 	{
-		CurrentViewModel = new PlaceholderViewModel(
-			this,
-			"Historia rozgrywek",
-			"Tutaj osoba 3 podłączy osobne okno albo widok historii rozgrywek i wygranych."
-		);
+        var historyWin = new CardGamesApp.Views.HistoryWindow();
+        historyWin.Show();
 	}
 }

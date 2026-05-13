@@ -4,6 +4,7 @@ using CardGamesApp.Models;
 using CardGamesApp.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using System;
 
 namespace CardGamesApp.ViewModels;
 

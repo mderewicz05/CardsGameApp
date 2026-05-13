@@ -8,7 +8,6 @@ namespace CardGamesApp.Views
         public HigherOrLowerView()
         {
             InitializeComponent();
-            DataContext = new HigherOrLowerViewModel();
         }
     }
 }

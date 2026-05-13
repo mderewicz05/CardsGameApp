@@ -1,10 +1,16 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:dg="clr-namespace:Avalonia.Controls;assembly=Avalonia.Controls.DataGrid"
+        xmlns:vm="using:CardGamesApp.ViewModels"
         x:Class="CardGamesApp.Views.HistoryWindow"
+        x:DataType="vm:MainWindowViewModel"
         Title="Historia Rozgrywek" Width="600" Height="400">
-    <StackPanel Margin="20">
-        <TextBlock Text="Historia Gier" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
-        <DataGrid ItemsSource="{Binding History}" AutoGenerateColumns="True" IsReadOnly="True">
-            </DataGrid>
-    </StackPanel>
+
+	<StackPanel Margin="20">
+		<TextBlock Text="Historia Gier" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
+		<dg:DataGrid ItemsSource="{ReflectionBinding History}"
+                     AutoGenerateColumns="True"
+                     IsReadOnly="True">
+		</dg:DataGrid>
+	</StackPanel>
 </Window>

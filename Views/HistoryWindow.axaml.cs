@@ -1,6 +1,7 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
+using CardGamesApp.Services;
 
 namespace CardGamesApp.Views
 {

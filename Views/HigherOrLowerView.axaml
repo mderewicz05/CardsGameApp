@@ -20,16 +20,23 @@
         </Border>
 
         <TextBlock Text="{Binding Message}" TextWrapping="Wrap" TextAlignment="Center" FontSize="16"/>
-        <TextBlock Text="{Binding Score, StringFormat='Twój wynik: {0}'}" FontSize="20" FontWeight="SemiBold" HorizontalAlignment="Center"/>
+        <TextBlock Text="{Binding Score, StringFormat='Twoj wynik: {0}'}" FontSize="20" FontWeight="SemiBold" HorizontalAlignment="Center"/>
 
         <StackPanel Orientation="Horizontal" Spacing="20" HorizontalAlignment="Center">
-            <Button Content="NI¯SZA" Command="{Binding GuessLower}" 
+            <Button Content="NIZSZA" Command="{Binding GuessLower}" 
                     Width="120" Height="50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                     Background="Firebrick" Foreground="White"/>
             
-            <Button Content="WY¯SZA" Command="{Binding GuessHigher}" 
+            <Button Content="WYZSZA" Command="{Binding GuessHigher}" 
                     Width="120" Height="50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                     Background="ForestGreen" Foreground="White"/>
+			<Button Content="PowrÃ³t do menu"
+					Command="{Binding PowrotDoMenuCommand}"
+					HorizontalAlignment="Left"
+					Margin="10"
+					Padding="10,5"
+					Background="#444455"
+					Foreground="White"/>
         </StackPanel>
 
     </StackPanel>
