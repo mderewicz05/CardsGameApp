@@ -14,11 +14,8 @@ public partial class OczkoViewModel : ViewModelBase
 
     private Deck _talia = new();
 
-    private readonly List<Card> _kartyGracza = new();
-    private readonly List<Card> _kartyKrupiera = new();
-
     [ObservableProperty]
-    private string kartyGraczaTekst = "-";
+    private Card? wybranaKartaGracza;
 
     [ObservableProperty]
     private string kartyKrupieraTekst = "-";
@@ -37,6 +34,10 @@ public partial class OczkoViewModel : ViewModelBase
 
     public ObservableCollection<Player> Players => _playerService.Players;
 
+    public ObservableCollection<Card> KartyGracza { get; } = new();
+
+    public ObservableCollection<Card> KartyKrupiera { get; } = new();
+
     public OczkoViewModel(MainWindowViewModel mainWindowViewModel, PlayerService playerService)
     {
         _mainWindowViewModel = mainWindowViewModel;
@@ -53,17 +54,20 @@ public partial class OczkoViewModel : ViewModelBase
         }
 
         _talia = new Deck();
-        _kartyGracza.Clear();
-        _kartyKrupiera.Clear();
 
-        _kartyGracza.Add(_talia.DobierzKarte());
-        _kartyGracza.Add(_talia.DobierzKarte());
+        KartyGracza.Clear();
+        KartyKrupiera.Clear();
 
-        _kartyKrupiera.Add(_talia.DobierzKarte());
-        _kartyKrupiera.Add(_talia.DobierzKarte());
+        KartyGracza.Add(_talia.DobierzKarte());
+        KartyGracza.Add(_talia.DobierzKarte());
 
+        KartyKrupiera.Add(_talia.DobierzKarte());
+        KartyKrupiera.Add(_talia.DobierzKarte());
+
+        WybranaKartaGracza = null;
         CzyGraAktywna = true;
-        Komunikat = "Gra rozpoczęta. Dobierz kartę albo zakończ turę.";
+
+        Komunikat = "Gra rozpoczęta. Dobierz kartę, usuń jedną kartę albo zakończ turę.";
         AktualizujTeksty();
     }
 
@@ -76,14 +80,42 @@ public partial class OczkoViewModel : ViewModelBase
             return;
         }
 
-        _kartyGracza.Add(_talia.DobierzKarte());
+        KartyGracza.Add(_talia.DobierzKarte());
         AktualizujTeksty();
 
-        if (ObliczSume(_kartyGracza) > 21)
+        if (ObliczSume(KartyGracza) > 21)
         {
             CzyGraAktywna = false;
             Komunikat = "Przekroczono 21. Przegrywasz.";
         }
+    }
+
+    [RelayCommand] 
+    private void UsunWybranaKarte()
+    {
+        if (!CzyGraAktywna)
+        {
+            Komunikat = "Najpierw rozpocznij grę.";
+            return;
+        }
+
+        if (WybranaKartaGracza is null)
+        {
+            Komunikat = "Najpierw wybierz kartę gracza z listy.";
+            return;
+        }
+
+        if (KartyGracza.Count <= 1)
+        {
+            Komunikat = "Nie możesz usunąć ostatniej karty.";
+            return;
+        }
+
+        KartyGracza.Remove(WybranaKartaGracza);
+        WybranaKartaGracza = null;
+
+        Komunikat = "Usunięto wybraną kartę.";
+        AktualizujTeksty();
     }
 
     [RelayCommand]
@@ -95,9 +127,9 @@ public partial class OczkoViewModel : ViewModelBase
             return;
         }
 
-        while (ObliczSume(_kartyKrupiera) < 17)
+        while (ObliczSume(KartyKrupiera) < 17)
         {
-            _kartyKrupiera.Add(_talia.DobierzKarte());
+            KartyKrupiera.Add(_talia.DobierzKarte());
         }
 
         CzyGraAktywna = false;
@@ -105,15 +137,17 @@ public partial class OczkoViewModel : ViewModelBase
         UstalZwyciezce();
     }
 
-    private int ObliczSume(List<Card> karty)
+    private int ObliczSume(IEnumerable<Card> karty)
     {
         int suma = 0;
+        int liczbaAsow = 0;
 
         foreach (var karta in karty)
         {
             if (karta.Figura == "A")
             {
                 suma += 11;
+                liczbaAsow++;
             }
             else if (karta.Figura is "J" or "Q" or "K")
             {
@@ -124,8 +158,6 @@ public partial class OczkoViewModel : ViewModelBase
                 suma += karta.Wartosc;
             }
         }
-
-        int liczbaAsow = karty.FindAll(karta => karta.Figura == "A").Count;
 
         while (suma > 21 && liczbaAsow > 0)
         {
@@ -138,8 +170,8 @@ public partial class OczkoViewModel : ViewModelBase
 
     private void UstalZwyciezce()
     {
-        int sumaGracza = ObliczSume(_kartyGracza);
-        int sumaKrupiera = ObliczSume(_kartyKrupiera);
+        int sumaGracza = ObliczSume(KartyGracza);
+        int sumaKrupiera = ObliczSume(KartyKrupiera);
 
         string nazwaGracza = Players.Count > 0 ? Players[0].Login : "Gracz";
 
@@ -167,10 +199,9 @@ public partial class OczkoViewModel : ViewModelBase
 
     private void AktualizujTeksty()
     {
-        KartyGraczaTekst = string.Join(", ", _kartyGracza);
-        KartyKrupieraTekst = string.Join(", ", _kartyKrupiera);
-        SumaGraczaTekst = $"Suma gracza: {ObliczSume(_kartyGracza)}";
-        SumaKrupieraTekst = $"Suma krupiera: {ObliczSume(_kartyKrupiera)}";
+        KartyKrupieraTekst = string.Join(", ", KartyKrupiera);
+        SumaGraczaTekst = $"Suma gracza: {ObliczSume(KartyGracza)}";
+        SumaKrupieraTekst = $"Suma krupiera: {ObliczSume(KartyKrupiera)}";
     }
 
     [RelayCommand]

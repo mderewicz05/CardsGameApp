@@ -22,7 +22,7 @@
                        Foreground="White"
                        HorizontalAlignment="Center" />
 
-            <TextBlock Text="Dobieraj karty tak, aby mieć jak najbliżej 21 i nie przekroczyć tej liczby."
+            <TextBlock Text="Dobieraj karty tak, aby mieć jak najbliżej 21. Możesz też usunąć jedną wybraną kartę."
                        Foreground="#CDD6F4"
                        FontSize="15"
                        TextAlignment="Center"
@@ -33,74 +33,79 @@
                 Background="#313244"
                 CornerRadius="16"
                 Padding="28"
-                Width="700"
+                Width="760"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center">
 
-            <StackPanel Spacing="16">
-                <TextBlock Text="Twoje karty:"
-                           FontSize="18"
-                           FontWeight="Bold"
-                           Foreground="White" />
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="24">
+                <StackPanel Grid.Column="0" Spacing="14">
+                    <TextBlock Text="Twoje karty:"
+                               FontSize="18"
+                               FontWeight="Bold"
+                               Foreground="White" />
 
-                <TextBlock Text="{Binding KartyGraczaTekst}"
-                           FontSize="18"
-                           Foreground="#CDD6F4"
-                           TextWrapping="Wrap" />
+                    <ListBox ItemsSource="{Binding KartyGracza}"
+                             SelectedItem="{Binding WybranaKartaGracza}"
+                             Height="160"
+                             FontSize="18" />
 
-                <TextBlock Text="{Binding SumaGraczaTekst}"
-                           FontSize="18"
-                           Foreground="#A6E3A1" />
+                    <TextBlock Text="{Binding SumaGraczaTekst}"
+                               FontSize="18"
+                               Foreground="#A6E3A1" />
 
-                <TextBlock Text="Karty krupiera:"
-                           FontSize="18"
-                           FontWeight="Bold"
-                           Foreground="White"
-                           Margin="0,12,0,0" />
-
-                <TextBlock Text="{Binding KartyKrupieraTekst}"
-                           FontSize="18"
-                           Foreground="#CDD6F4"
-                           TextWrapping="Wrap" />
-
-                <TextBlock Text="{Binding SumaKrupieraTekst}"
-                           FontSize="18"
-                           Foreground="#A6E3A1" />
-
-                <TextBlock Text="{Binding Komunikat}"
-                           FontSize="18"
-                           Foreground="#F9E2AF"
-                           TextWrapping="Wrap"
-                           TextAlignment="Center"
-                           HorizontalAlignment="Center"
-                           Margin="0,10,0,0" />
-
-                <StackPanel Orientation="Horizontal"
-                            HorizontalAlignment="Center"
-                            Spacing="12">
-                    <Button Content="Start"
-                            Command="{Binding StartCommand}"
-                            Width="120"
-                            Height="45" />
-
-                    <Button Content="Dobierz"
-                            Command="{Binding DobierzCommand}"
-                            Width="120"
-                            Height="45" />
-
-                    <Button Content="Zostań"
-                            Command="{Binding ZostanCommand}"
-                            Width="120"
+                    <Button Content="Usuń wybraną kartę"
+                            Command="{Binding UsunWybranaKarteCommand}"
                             Height="45" />
                 </StackPanel>
-            </StackPanel>
+
+                <StackPanel Grid.Column="1" Spacing="14">
+                    <TextBlock Text="Karty krupiera:"
+                               FontSize="18"
+                               FontWeight="Bold"
+                               Foreground="White" />
+
+                    <TextBlock Text="{Binding KartyKrupieraTekst}"
+                               FontSize="18"
+                               Foreground="#CDD6F4"
+                               TextWrapping="Wrap" />
+
+                    <TextBlock Text="{Binding SumaKrupieraTekst}"
+                               FontSize="18"
+                               Foreground="#A6E3A1" />
+
+                    <TextBlock Text="{Binding Komunikat}"
+                               FontSize="18"
+                               Foreground="#F9E2AF"
+                               TextWrapping="Wrap"
+                               TextAlignment="Center"
+                               Margin="0,10,0,0" />
+                </StackPanel>
+            </Grid>
         </Border>
 
-        <Button Grid.Row="2"
-                Content="Powrót do menu"
-                Command="{Binding PowrotDoMenuCommand}"
-                Width="180"
-                Height="45"
-                HorizontalAlignment="Center" />
+        <StackPanel Grid.Row="2"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    Spacing="12">
+            <Button Content="Start"
+                    Command="{Binding StartCommand}"
+                    Width="120"
+                    Height="45" />
+
+            <Button Content="Dobierz"
+                    Command="{Binding DobierzCommand}"
+                    Width="120"
+                    Height="45" />
+
+            <Button Content="Zostań"
+                    Command="{Binding ZostanCommand}"
+                    Width="120"
+                    Height="45" />
+
+            <Button Content="Powrót do menu"
+                    Command="{Binding PowrotDoMenuCommand}"
+                    Width="180"
+                    Height="45" />
+        </StackPanel>
     </Grid>
 </UserControl>
