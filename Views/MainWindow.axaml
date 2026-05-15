@@ -1,29 +1,31 @@
-<Window xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:vm="using:CardGamesApp.ViewModels"
-        xmlns:views="using:CardGamesApp.Views"
-        x:Class="CardGamesApp.Views.MainWindow"
-        x:DataType="vm:MainWindowViewModel"
-        Title="Card Games App"
-        Width="900"
-        Height="600"
-        MinWidth="700"
-        MinHeight="500">
-<Window.DataTemplates>
-    <DataTemplate DataType="{x:Type vm:MainMenuViewModel}">
-        <views:MainMenuView />
-    </DataTemplate>
+<Window
+    x:Class="CardGamesApp.Views.MainWindow"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:views="clr-namespace:CardGamesApp.Views"
+    xmlns:vm="clr-namespace:CardGamesApp.ViewModels"
+    x:DataType="vm:MainWindowViewModel"
+    Title="CardGamesApp"
+    Width="900"
+    Height="600"
+    Background="#1E1E2E">
 
-    <DataTemplate DataType="{x:Type vm:PlayerViewModel}">
-        <views:PlayerView />
-    </DataTemplate>
+    <Window.DataTemplates>
+        <DataTemplate DataType="{x:Type vm:MainMenuViewModel}">
+            <views:MainMenuView/>
+        </DataTemplate>
 
-    <DataTemplate DataType="{x:Type vm:PlaceholderViewModel}">
-        <views:PlaceholderView />
-    </DataTemplate>
-</Window.DataTemplates>
+        <DataTemplate DataType="{x:Type vm:PlayerViewModel}">
+            <views:PlayerView/>
+        </DataTemplate>
 
-    <Border Padding="24" Background="#1E1E2E">
-        <ContentControl Content="{Binding CurrentViewModel}" />
+        <DataTemplate DataType="{x:Type vm:PlaceholderViewModel}">
+            <views:PlaceholderView/>
+        </DataTemplate>
+    </Window.DataTemplates>
+
+    <Border Padding="24">
+        <ContentControl Content="{Binding CurrentViewModel}"/>
     </Border>
+
 </Window>

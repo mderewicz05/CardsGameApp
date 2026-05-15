@@ -7,7 +7,7 @@ public class PlayerService
 {
 	public ObservableCollection<Player> Players { get; } = new();
 
-	public bool AddPlayer(string login)
+	public bool AddPlayer(string login, string? avatarPath = null)
 	{
 		if (string.IsNullOrWhiteSpace(login))
 		{
@@ -24,7 +24,7 @@ public class PlayerService
 			}
 		}
 
-		Players.Add(new Player(login));
+		Players.Add(new Player(login, avatarPath));
 		return true;
 	}
 

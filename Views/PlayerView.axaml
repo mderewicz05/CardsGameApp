@@ -14,7 +14,7 @@
         </Style>
     </UserControl.Styles>
 
-    <Grid RowDefinitions="Auto,Auto,*,Auto" RowSpacing="18">
+    <Grid RowDefinitions="Auto,Auto,Auto,*,Auto" RowSpacing="18">
         <StackPanel Grid.Row="0" Spacing="6">
             <TextBlock Text="Dodawanie graczy"
                        FontSize="32"
@@ -50,6 +50,49 @@
                 Background="#313244"
                 CornerRadius="12"
                 Padding="16">
+            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="16">
+                <Border Grid.Column="0"
+                        Width="80"
+                        Height="80"
+                        CornerRadius="40"
+                        ClipToBounds="True"
+                        Background="#45475A">
+
+                    <Grid>
+                       <Image Source="{Binding AvatarImage}"
+       Stretch="UniformToFill"
+       IsVisible="{Binding HasAvatar}" />
+
+                        <TextBlock Text="Avatar"
+                                   Foreground="White"
+                                   FontSize="12"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   IsVisible="{Binding HasNoAvatar}" />
+                    </Grid>
+                </Border>
+
+                <StackPanel Grid.Column="1"
+                            VerticalAlignment="Center"
+                            Spacing="8">
+                    <TextBlock Text="Avatar gracza"
+                               Foreground="White"
+                               FontSize="18"
+                               FontWeight="Bold" />
+
+                    <Button Content="Wybierz avatar"
+                            Command="{Binding ChooseAvatarCommand}"
+                            CommandParameter="{Binding $parent[Window]}"
+                            Width="180"
+                            Height="40" />
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="3"
+                Background="#313244"
+                CornerRadius="12"
+                Padding="16">
             <Grid RowDefinitions="Auto,*">
                 <TextBlock Grid.Row="0"
                            Text="Lista graczy"
@@ -65,7 +108,7 @@
             </Grid>
         </Border>
 
-        <Grid Grid.Row="3" ColumnDefinitions="*,Auto,Auto" ColumnSpacing="12">
+        <Grid Grid.Row="4" ColumnDefinitions="*,Auto,Auto" ColumnSpacing="12">
             <TextBlock Grid.Column="0"
                        Text="{Binding Message}"
                        Foreground="#F9E2AF"

@@ -23,4 +23,16 @@
     </PackageReference>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.1" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\MainMenuView.axaml.cs">
+      <DependentUpon>MainMenuView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\PlayerView.axaml.cs">
+      <DependentUpon>PlayerView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\PlaceholderView.axaml.cs">
+      <DependentUpon>PlaceholderView.axaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
 </Project>

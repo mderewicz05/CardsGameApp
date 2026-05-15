@@ -31,5 +31,14 @@ build_property.EnableCodeStyleSeverity =
 [C:/Users/mderewicz/source/repos/CardGamesApp/App.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
+[C:/Users/mderewicz/source/repos/CardGamesApp/Views/MainMenuView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
 [C:/Users/mderewicz/source/repos/CardGamesApp/Views/MainWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/mderewicz/source/repos/CardGamesApp/Views/PlaceholderView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/mderewicz/source/repos/CardGamesApp/Views/PlayerView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml

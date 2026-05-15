@@ -84,6 +84,7 @@ C:\Users\mderewicz\source\repos\CardGamesApp\obj\Debug\net10.0\CardGamesApp.Gene
 C:\Users\mderewicz\source\repos\CardGamesApp\obj\Debug\net10.0\CardGamesApp.AssemblyInfoInputs.cache
 C:\Users\mderewicz\source\repos\CardGamesApp\obj\Debug\net10.0\CardGamesApp.AssemblyInfo.cs
 C:\Users\mderewicz\source\repos\CardGamesApp\obj\Debug\net10.0\CardGamesApp.csproj.CoreCompileInputs.cache
+C:\Users\mderewicz\source\repos\CardGamesApp\obj\Debug\net10.0\CardGamesApp.sourcelink.json
 C:\Users\mderewicz\source\repos\CardGamesApp\obj\Debug\net10.0\CardGame.DFB024B2.Up2Date
 C:\Users\mderewicz\source\repos\CardGamesApp\obj\Debug\net10.0\CardGamesApp.dll
 C:\Users\mderewicz\source\repos\CardGamesApp\obj\Debug\net10.0\refint\CardGamesApp.dll
